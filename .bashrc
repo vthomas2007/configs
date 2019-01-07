@@ -56,6 +56,9 @@ xterm*|rxvt*)
     ;;
 esac
 
+# NOTE: On a fresh OS X install you'll need to install coreutils for this to work
+# brew install coreutils
+# https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
