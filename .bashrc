@@ -102,3 +102,5 @@ export PATH="$PATH:/usr/local/heroku/bin"
 PATH=$PATH:$HOME/.tmux/scripts
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH:/usr/local/opt/go/libexec/bin
+
+# Testing git stuff
