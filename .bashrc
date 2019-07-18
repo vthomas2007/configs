@@ -56,9 +56,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# NOTE: On a fresh OS X install you'll need to install coreutils for this to work
-# brew install coreutils
-# https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
@@ -73,34 +70,26 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# ba aliases
-alias pgr='dropdb blueapron_development; bundle exec rake db:create; pg_restore -vcOx -h localhost -d blueapron_development'
 alias besr='bundle exec spring rspec'
-alias ocd='OVERCOMMIT_DISABLED=1'
-
-alias staging='ba exec -e staging -a blueapron.com'
-alias prod='ssh -A bastion.production.b--a.co'
-ssh-add
 
 alias ctags="`brew --prefix`/bin/ctags"
 alias generate_rails_ctags='ctags -R --exclude=.git --exclude=log *'
 
 alias rubocop_changed='git status --porcelain | cut -c4- | grep '.rb' | xargs rubocop'
 
-alias wordpress='cd /Applications/MAMP/htdocs/blog'
-alias bloglogin='ssh 192.163.200.34'
 #alias vim='mvim -v'
 
 source ~/.git-completion.bash
 
 eval "$(nodenv init -)"
 
-export GITHUB_API_TOKEN=94175b7ab94522f63aa2598340e32e269b528b2b
-export HOMEBREW_GITHUB_API_TOKEN=2fb3a1a7dd7cb0fd88bf502111a0923da81ca29d
-
 export PATH="$PATH:/usr/local/heroku/bin"
 PATH=$PATH:$HOME/.tmux/scripts
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH:/usr/local/opt/go/libexec/bin
 
-# Testing git stuff
+alias gg='git grep '
+alias gd='git diff'
+alias gdc='git diff --cached'
+
+alias dumpgql='bundle exec rake graphql:schema:dump'
