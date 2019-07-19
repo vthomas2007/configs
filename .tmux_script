@@ -1,0 +1,33 @@
+#!/bin/bash
+SESSION=blue_apron
+
+cd ~/dev/blueapron.com/
+tmux new-session -d -s $SESSION
+tmux rename-window -t $SESSION 'run'
+tmux send-keys "bundle exec rails s" C-m
+
+cd ~/dev/my-blueapron/
+tmux split-window -h
+tmux send-keys "grunt serve --account" C-m
+tmux split-window -v
+tmux send-keys "grunt serve --registration" C-m
+
+cd ~/dev/blueadmin
+tmux split-window -v
+tmux send-keys "ember server" C-m
+
+cd ~/dev/blueapron.com/
+tmux split-window -v
+tmux send-keys "bundle exec sidekiq -v" C-m
+tmux new-window -n 'console'
+tmux send-keys "bundle exec rails c" C-m
+tmux new-window -n 'app'
+tmux send-keys "cd app" C-m
+tmux new-window -n 'spec'
+
+cd ~/dev/blueapron-marketplace/
+tmux new-window -n 'marketplace'
+
+tmux select-window -t app
+
+tmux attach -t $SESSION
